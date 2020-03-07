@@ -1,27 +1,24 @@
-﻿<div class="container">
-    <h1>Displaying User Data</h1>
-    <p>Log in with your Spotify account and this demo will display information about you fetched using the Spotify Web API</p>
-    <button class="btn btn-primary" id="btn-login">Login</button>
-    <div id="result"></div>
-    <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
-    <script src="index.js" defer></script>
-</div>
-<script id="result-template" type="text/x-handlebars-template">
-    <dl>
-        <img src="{{images.0.url}}">
-        <dt>User Name</dt>
-        <dd>{{id}}</dd>
-        <dt>Display Name</dt>
-        <dd>{{display_name}}</dd>
-        <dt>Country</dt>
-        <dd>{{country}}</dd>
-        <dt>Followers</dt>
-        <dd>{{followers.total}}</dd>
-        <dt>Profile</dt>
-        <dd><a href="{{external_urls.spotify}}" target="_blank">{{external_urls.spotify}}</a></dd>
-        <dt>Email</dt>
-        <dd>{{email}}</dd>
-        <dt>Product</dt>
-        <dd>{{product}}</dd>
-    </dl>
-</script>
+﻿<html>
+<head>
+    <script>
+        (function () {
+            var hash = {};
+            window.location.hash.replace(/^#\/?/, '').split('&').forEach(function (kv) {
+                var spl = kv.indexOf('=');
+                if (spl != -1) {
+                    hash[kv.substring(0, spl)] = decodeURIComponent(kv.substring(spl + 1));
+                }
+            });
+            console.log('initial hash', hash);
+            if (hash.access_token) {
+                window.opener.postMessage(JSON.stringify({
+                    type: 'access_token',
+                    access_token: hash.access_token,
+                    expires_in: hash.expires_in || 0
+                }));
+                window.close();
+            }
+        })();
+    </script>
+</head>
+</html>
