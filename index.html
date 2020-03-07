@@ -1,79 +1,27 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title>Spotify Web Playback SDK Template</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-
-    <!-- Include the Web Playback SDK -->
-    <script src="https://sdk.scdn.co/spotify-player.js"></script>
-
-    <!-- Include our Javascript -->
-    <script>
-        (function() {
-    
-    function login(callback) {
-        var CLIENT_ID = '529143f2174b4352afc00dfd7877c549';
-        var REDIRECT_URI = 'https://wickedcube.github.io/';
-        function getLoginURL(scopes) {
-            return 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID +
-              '&redirect_uri=' + encodeURIComponent(REDIRECT_URI) +
-              '&scope=' + encodeURIComponent(scopes.join(' ')) +
-              '&response_type=token';
-        }
-        
-        var url = getLoginURL([
-            'user-read-email'
-        ]);
-        
-        var width = 450,
-            height = 730,
-            left = (screen.width / 2) - (width / 2),
-            top = (screen.height / 2) - (height / 2);
-    
-        window.addEventListener("message", function(event) {
-            var hash = JSON.parse(event.data);
-            if (hash.type == 'access_token') {
-                callback(hash.access_token);
-            }
-        }, false);
-        
-        var w = window.open(url,
-                            'Spotify',
-                            'menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left
-                           );
-        
-    }
-
-    function getUserData(accessToken) {
-        return $.ajax({
-            url: 'https://api.spotify.com/v1/me',
-            headers: {
-               'Authorization': 'Bearer ' + accessToken
-            }
-        });
-    }
-
-    var templateSource = document.getElementById('result-template').innerHTML,
-        template = Handlebars.compile(templateSource),
-        resultsPlaceholder = document.getElementById('result'),
-        loginButton = document.getElementById('btn-login');
-    
-    loginButton.addEventListener('click', function() {
-        login(function(accessToken) {
-            getUserData(accessToken)
-                .then(function(response) {
-                    loginButton.style.display = 'none';
-                    resultsPlaceholder.innerHTML = template(response);
-                });
-            });
-    });
-    
-})();
-    </script>
-</head>
+﻿<div class="container">
+    <h1>Displaying User Data</h1>
+    <p>Log in with your Spotify account and this demo will display information about you fetched using the Spotify Web API</p>
+    <button class="btn btn-primary" id="btn-login">Login</button>
+    <div id="result"></div>
+    <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
+    <script src="index.js" defer></script>
+</div>
+<script id="result-template" type="text/x-handlebars-template">
+    <dl>
+        <img src="{{images.0.url}}">
+        <dt>User Name</dt>
+        <dd>{{id}}</dd>
+        <dt>Display Name</dt>
+        <dd>{{display_name}}</dd>
+        <dt>Country</dt>
+        <dd>{{country}}</dd>
+        <dt>Followers</dt>
+        <dd>{{followers.total}}</dd>
+        <dt>Profile</dt>
+        <dd><a href="{{external_urls.spotify}}" target="_blank">{{external_urls.spotify}}</a></dd>
+        <dt>Email</dt>
+        <dd>{{email}}</dd>
+        <dt>Product</dt>
+        <dd>{{product}}</dd>
+    </dl>
+</script>
