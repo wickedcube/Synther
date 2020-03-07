@@ -37,8 +37,6 @@
         const clientId = '529143f2174b4352afc00dfd7877c549';
         const redirectUri = 'https://wickedcube.github.io/';
         const scopes = [
-            'streaming',
-            'user-read-birthdate',
             'user-modify-playback-state'
         ];
 
@@ -86,12 +84,7 @@
             console.log(_token);
             $.ajax({
                 url: "https://api.spotify.com/v1/me/player/play?device_id=" + device_id,
-                type: "PUT",
-                data: '{"uris": ["spotify:track:5ya2gsaIhTkAuWYEMB0nw5"]}',
-                beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + _token); },
-                success: function (data) {
-                    console.log(data)
-                }
+                type: "PUT"
             });
         }
 
