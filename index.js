@@ -36,7 +36,15 @@
 
     function getUserData(accessToken) {
         return $.ajax({
-            url: 'https://api.spotify.com/v1/me',
+            method: "PUT",
+            url: 'https://api.spotify.com/v1/me/player/play',
+            data: {
+            "context_uri": "spotify:album:35s58BRTGAEWztPo9WqCIs",
+            "offset": {
+                "position": 1
+            },
+            "position_ms": 100
+            },
             headers: {
                 'Authorization': 'Bearer ' + accessToken
             }
