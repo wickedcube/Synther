@@ -59,10 +59,7 @@
     loginButton.addEventListener('click', function () {
         login(function (accessToken) {
             getUserData(accessToken)
-                .then(function (response) {
-                    loginButton.style.display = 'none';
-                    resultsPlaceholder.innerHTML = template(response);
-                });
+                .then(console.log("Play Started"));
         });
     });
 
