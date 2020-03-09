@@ -36,19 +36,29 @@
     }
 
     function getUserData(accessToken) {
-        return $.ajax({
-            method: "PUT",
-            url: 'https://api.spotify.com/v1/me/player/play',
-            beforeSend: function(xhr) {
-             xhr.setRequestHeader("Authorization", "Bearer " + accessToken)
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://api.spotify.com/v1/me/player/play",
+            "method": "PUT",
+            "headers": {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer "+ accessToken,
+            "User-Agent": "PostmanRuntime/7.19.0",
+            "Accept": "*/*",
+            "Cache-Control": "no-cache",
+            "Host": "api.spotify.com",
+            "Accept-Encoding": "gzip, deflate",
+            "Content-Length": "124",
+            "Connection": "keep-alive",
+            "cache-control": "no-cache"
             },
-            data: {
-            "context_uri": "spotify:album:35s58BRTGAEWztPo9WqCIs",
-            "offset": {
-                "position": 1
-            },
-            "position_ms": 100
-            }
+            "processData": false,
+            "data": "{\r\n  \"context_uri\": \"spotify:album:35s58BRTGAEWztPo9WqCIs\",\r\n  \"offset\": {\r\n    \"position\": 1\r\n  },\r\n  \"position_ms\": 100\r\n}"
+        }
+
+        $.ajax(settings).done(function (response) {
+        console.log(response);
         });
     }
 
