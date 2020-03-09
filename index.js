@@ -37,7 +37,7 @@
 
     function getUserData(accessToken) {
         return $.ajax({
-            method: "POST",
+            method: "PUT",
             url: 'https://api.spotify.com/v1/me/player/play',
             beforeSend: function(xhr) {
              xhr.setRequestHeader("Authorization", "Bearer " + accessToken)
