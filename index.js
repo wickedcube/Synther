@@ -39,15 +39,15 @@
         return $.ajax({
             method: "POST",
             url: 'https://api.spotify.com/v1/me/player/play',
+            beforeSend: function(xhr) {
+             xhr.setRequestHeader("Authorization", "Bearer " + accessToken)
+            },
             data: {
             "context_uri": "spotify:album:35s58BRTGAEWztPo9WqCIs",
             "offset": {
                 "position": 1
             },
             "position_ms": 100
-            },
-            headers: {
-                'Authorization': 'Bearer ' + accessToken
             }
         });
     }
