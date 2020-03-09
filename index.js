@@ -11,7 +11,8 @@
         }
 
         var url = getLoginURL([
-            'user-read-email'
+            'user-read-email',
+            'user-modify-playback-state'
         ]);
 
         var width = 450,
