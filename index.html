@@ -1,28 +1,18 @@
-﻿<div class="container">
-    <h1>Displaying User Data</h1>
-    <p>Log in with your Spotify account and this demo will display information about you fetched using the Spotify Web API</p>
-    <button class="btn btn-primary" id="btn-login">Login</button>
-    <div id="result"></div>
-    <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="index.js" defer></script>
+﻿<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="index.js" defer></script>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Synther</h1>
+    <p class="lead">Login to spotify and select yout track (Premium users only)</p>
 </div>
-<script id="result-template" type="text/x-handlebars-template">
-    <dl>
-        <img src="{{images.0.url}}">
-        <dt>User Name</dt>
-        <dd>{{id}}</dd>
-        <dt>Display Name</dt>
-        <dd>{{display_name}}</dd>
-        <dt>Country</dt>
-        <dd>{{country}}</dd>
-        <dt>Followers</dt>
-        <dd>{{followers.total}}</dd>
-        <dt>Profile</dt>
-        <dd><a href="{{external_urls.spotify}}" target="_blank">{{external_urls.spotify}}</a></dd>
-        <dt>Email</dt>
-        <dd>{{email}}</dd>
-        <dt>Product</dt>
-        <dd>{{product}}</dd>
-    </dl>
-</script>
+<div class="text-center">
+    <button id = "btn-login"class="btn btn-outline-primary" role="button">Login with spotify</button>
+    <button style ="display:none" id = "btn-play"class="btn btn-outline-primary" role="button">Play</button>
+</div>
+<form id = "TrackSearchBar" style = "display : none ; max-width : 300" class="text-center">
+    <div class="form-group">
+        <input type="email" class="form-control" id="trackSeacrh" placeholder="Search for Tracks,Artists etc.">
+    </div>
+</form>
