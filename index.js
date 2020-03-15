@@ -162,7 +162,7 @@ function searchSpotify(trackname) {
             }
         },
         "error" : function(result){
-            if(result.message.includes("expired"))
+            if(result.responseJSON.error.message.includes("expired"))
             {
                 onTokenExpired();
             }
