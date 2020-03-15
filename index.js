@@ -38,6 +38,10 @@ function spotifySearch(searchString){
         LAST_TRACK_SEARCH_TERM = searchString;
         searchSpotify(LAST_TRACK_SEARCH_TERM);
     }
+    else if(searchString.length <= 4 || searchString == undefined || searchString == "" || searchString == null)
+    {
+         trackSearchDiv.css("display", "none");
+    }
 }
 
 function getLoginURL(scopes) {
@@ -96,7 +100,7 @@ function searchSpotify(trackname) {
             {
                 topResultCard.css("display", "block");
                 topResultCard.find('.card-img-top').attr('src', lastTrack.album.images[0].url);
-                topResultCard.find('.card-title').val(lastTrack.name);
+                topResultCard.find('.card-title').text(lastTrack.name);
                 var artistNameString = "";
                 for (let index = 0; index < lastTrack.artists.length; index++) {
                     const element = lastTrack.artists[index];
@@ -105,7 +109,7 @@ function searchSpotify(trackname) {
                     else
                         artistNameString+=element.name;
                 }
-                topResultCard.find('.card-text').val(artistNameString);
+                topResultCard.find('.card-text').text(artistNameString);
                 lastTrack = tracks[maxPopularityIndex];
                 //console.log(lastTrack + " " + maxPopularity);
             }
