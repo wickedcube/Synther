@@ -2,10 +2,14 @@ var CLIENT_ID = '529143f2174b4352afc00dfd7877c549';
 var REDIRECT_URI = 'https://wickedcube.github.io/callback/';
 var ACCESS_TOKEN = '';
 var TRACK_SEARCH_LIMIT = 5;
+var LAST_TRACK_SEARCH_TERM = '';
 
 var loginButton = document.getElementById('btn-login');
 var trackSearchDiv = document.getElementById('trackSearchDiv');
 var trackSearchInput = document.getElementById('trackSearchInput');
+var topResultCard = document.getElementById('topResultCard');
+var playButton = document.getElementById('PlayTrackButton');
+var lastTrack;
 
 function login() {
     var width = 450,
@@ -29,8 +33,11 @@ function login() {
 }
 
 function spotifySearch(searchString){
-    if(searchString.length > 4)
-        getTracksData(searchString);
+    if(searchString.length > 4 && searchString != LAST_TRACK_SEARCH_TERM)
+    {
+        LAST_TRACK_SEARCH_TERM = searchString;
+        searchSpotify(LAST_TRACK_SEARCH_TERM);
+    }
 }
 
 function getLoginURL(scopes) {
@@ -46,6 +53,7 @@ var url = getLoginURL([
 ]);
 
 function playMusic(trackURI) {
+    var trackURI = lastTrack.uri;
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -61,7 +69,7 @@ function playMusic(trackURI) {
     $.ajax(settings);
 }
 
-function getTracksData(trackname) {
+function searchSpotify(trackname) {
     var ajaxRequest = {
         "async": true,
         "crossDomain": true,
@@ -86,8 +94,24 @@ function getTracksData(trackname) {
 
             if(maxPopularityIndex > -1)
             {
-                playMusic(tracks[maxPopularityIndex].uri);
-                console.log(tracks[maxPopularityIndex].name + " " + maxPopularity);
+                topResultCard.style.display = 'block';
+                topResultCard.find('.card-img-top').attr('src', lastTrack.album.images[0].url);
+                topResultCard.find('.card-title').value = lastTrack.name;
+                var artistNameString = "";
+                for (let index = 0; index < lastTrack.artists.length; index++) {
+                    const element = lastTrack.artists[index];
+                    if(index < lastTrack.artists.length - 1)
+                        artistNameString+=(element.name+",");
+                    else
+                        artistNameString+=element.name;
+                }
+                topResultCard.find('.card-text').value = artistNameString;
+                lastTrack = tracks[maxPopularityIndex];
+                //console.log(lastTrack + " " + maxPopularity);
+            }
+            else
+            {
+                topResultCard.style.display = 'none';
             }
         }
     }
@@ -97,6 +121,10 @@ function getTracksData(trackname) {
 
 loginButton.addEventListener('click', function () {
     login();
+});
+
+playButton.addEventListener('click', function () {
+    playMusic();
 });
 
 trackSearchInput.addEventListener('keydown', function() {
