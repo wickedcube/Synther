@@ -105,7 +105,7 @@ function searchSpotify(trackname) {
                     else
                         artistNameString+=element.name;
                 }
-                topResultCard.find('.card-text')val(artistNameString);
+                topResultCard.find('.card-text').val(artistNameString);
                 lastTrack = tracks[maxPopularityIndex];
                 //console.log(lastTrack + " " + maxPopularity);
             }
