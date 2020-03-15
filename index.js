@@ -9,6 +9,7 @@ var trackSearchDiv = $('#trackSearchDiv');
 var trackSearchInput = $('#trackSearchInput');
 var topResultCard = $('#topResultCard');
 var playButton = $('#PlayTrackButton');
+var playGameButton = $('#PlayGameButton');
 var titleText = $('#titleText');
 var lastTrack;
 
@@ -87,6 +88,10 @@ var url = getLoginURL([
     'user-modify-playback-state'
 ]);
 
+function redirectToGame(){
+
+}
+
 function playMusic(trackURI) {
     var trackURI = lastTrack.uri;
     var settings = {
@@ -161,6 +166,10 @@ loginButton.on('click', function () {
 
 playButton.on('click', function () {
     playMusic();
+});
+
+playGameButton.on('click', function () {
+    redirectToGame();
 });
 
 trackSearchInput.on('keydown', function() {
