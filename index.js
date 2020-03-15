@@ -1,6 +1,7 @@
 var CLIENT_ID = '529143f2174b4352afc00dfd7877c549';
 var REDIRECT_URI = 'https://wickedcube.github.io/callback/';
 var ACCESS_TOKEN = '';
+var TRACK_SEARCH_LIMIT = 5;
 
 var loginButton = document.getElementById('btn-login');
 var trackSearchDiv = document.getElementById('trackSearchDiv');
@@ -65,15 +66,18 @@ function getTracksData(trackname) {
     var ajaxRequest = {
         "async": true,
         "crossDomain": true,
-        "url": "https://api.spotify.com/v1/search&q=name:"+encodeURIComponent(trackname)+"&type=track,artist&market=us&limit=3&offset=0",
+        "url": "https://api.spotify.com/v1/search?q=name:"+encodeURIComponent(trackname)+"&type=track&market=us&limit="+TRACK_SEARCH_LIMIT+"&offset=0",
         "method": "GET",
         "headers": {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + ACCESS_TOKEN,
         },
-        "processData": false,
         "success" : function (result){
-            alert("result");
+            var tracks = result.data.tracks.items;
+            for (let index = 0; index < array.length; index++) {
+                const element = tracks[index];
+                console.log(element.name);
+            }
         }
     }
 
