@@ -3,21 +3,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script type="text/javascript">
-    function setCookie(key, value, expiry) {
-        var expires = new Date();
-        expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
-        document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
-    }
-
-    function getCookie(key) {
-        var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
-        return keyValue ? keyValue[2] : null;
-    }
-
-    function eraseCookie(key) {
-        var keyValue = getCookie(key);
-        setCookie(key, keyValue, '-1');
-    }
+    
 
 </script>
 <script src="index.js" defer></script>
@@ -31,7 +17,7 @@
             <p id ="titleText" class="lead">Login to spotify</p>
             <button id = "btn-login"class="btn btn-outline-primary" role="button">Login with spotify</button>
             <div id = "trackSearchDiv" style = "padding-top:35px ; display:none;">
-                <input type="text" class="form-control" id="trackSearchInput" placeholder="Ex. Let her go Passenger">
+                <input type="text" class="form-control" id="trackSearchInput" placeholder="Eg. One more time">
                 <div id ="topResultCard" style="display:none; height:240px ; padding-top:22px;padding-left:50px;padding-right:50px">
                     <img class="card-img-top" src="">
                     <div class="card-body">
