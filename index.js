@@ -26,8 +26,8 @@ function login() {
         var hash = JSON.parse(event.data);
         if (hash.type == 'access_token') {
             ACCESS_TOKEN = hash.access_token;
-            loginButton.style.display = 'none';
-            trackSearchDiv.style.display = 'block';
+            loginButton.css("display", "none");
+            trackSearchDiv.css("display", "block");
         }
     }, false);
 }
@@ -94,7 +94,7 @@ function searchSpotify(trackname) {
 
             if(maxPopularityIndex > -1)
             {
-                topResultCard.style.display = 'block';
+                topResultCard.css("display", "block");
                 topResultCard.find('.card-img-top').attr('src', lastTrack.album.images[0].url);
                 topResultCard.find('.card-title').value = lastTrack.name;
                 var artistNameString = "";
@@ -111,7 +111,7 @@ function searchSpotify(trackname) {
             }
             else
             {
-                topResultCard.style.display = 'none';
+                topResultCard.css("display", "none");
             }
         }
     }
