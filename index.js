@@ -97,7 +97,7 @@ var url = getLoginURL([
 ]);
 
 function redirectToGame(){
-    window.location.replace("https://wickedcube.github.io/SyntherWEBGL/&" + lastTrack.id + "&" + ACCESS_TOKEN);
+    window.location.replace("https://wickedcube.github.io/SyntherWEBGL/?" + lastTrack.id + "&" + ACCESS_TOKEN);
 }
 
 function playMusic(trackURI) {
