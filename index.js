@@ -45,9 +45,7 @@ var url = getLoginURL([
     'user-modify-playback-state'
 ]);
 
-function playMusic(track) {
-    var albumID = track.id;
-    var songIndex = track.track_number;
+function playMusic(trackURI) {
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -57,8 +55,7 @@ function playMusic(track) {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + ACCESS_TOKEN,
         },
-        "processData": false,
-        "data": "{\r\n  \"context_uri\": \"spotify:album:" + albumID + "\",\r\n  \"offset\": {\r\n    \"position\": " + songIndex + "\r\n  },\r\n  \"position_ms\": 100\r\n}"
+        "data": JSON.stringify({"uris":[trackURI]}),
     }
 
     $.ajax(settings);
@@ -89,7 +86,7 @@ function getTracksData(trackname) {
 
             if(maxPopularityIndex > -1)
             {
-                playMusic(tracks[maxPopularityIndex]);
+                playMusic(tracks[maxPopularityIndex].uri);
                 console.log(tracks[maxPopularityIndex].name + " " + maxPopularity);
             }
         }
