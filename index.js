@@ -7,8 +7,8 @@ var LAST_TRACK_SEARCH_TERM = '';
 var loginButton = document.getElementById('btn-login');
 var trackSearchDiv = document.getElementById('trackSearchDiv');
 var trackSearchInput = document.getElementById('trackSearchInput');
-var topResultCard = document.getElementById('topResultCard');
-var playButton = document.getElementById('PlayTrackButton');
+var topResultCard = $('#topResultCard');
+var playButton = $('#PlayTrackButton');
 var lastTrack;
 
 function login() {
