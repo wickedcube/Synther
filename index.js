@@ -40,7 +40,7 @@ function spotifySearch(searchString){
     }
     else if(searchString.length <= 4 || searchString == undefined || searchString == "" || searchString == null)
     {
-         trackSearchDiv.css("display", "none");
+         topResultCard.css("display", "none");
     }
 }
 
