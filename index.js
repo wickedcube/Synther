@@ -16,9 +16,7 @@ $(document).ready(function() {
   ACCESS_TOKEN =  getCookie('spotifyAToken');
   if(ACCESS_TOKEN != undefined && ACCESS_TOKEN != null)
   {
-    titleText.text("Great!, You're logged in now, search for a track and enjoy");
-    loginButton.css("display", "none");
-    trackSearchDiv.css("display", "block");
+    onLoginSuccess();
   }
 });
 
@@ -38,6 +36,12 @@ function eraseCookie(key) {
     setCookie(key, keyValue, '-1');
 }
 
+function onLoginSuccess(){
+    titleText.text("Great!, You're logged in now, search for a track and enjoy");
+    loginButton.css("display", "none");
+    trackSearchDiv.css("display", "block");
+}
+
 function login() {
     var width = 450,
         height = 730,
@@ -54,8 +58,7 @@ function login() {
         if (hash.type == 'access_token') {
             ACCESS_TOKEN = hash.access_token;
             setCookie('spotifyAToken',ACCESS_TOKEN,'1');
-            loginButton.css("display", "none");
-            trackSearchDiv.css("display", "block");
+            onLoginSuccess();
         }
     }, false);
 }
