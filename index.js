@@ -85,7 +85,8 @@ function getTracksData(trackname) {
                 }
             }
 
-            console.log(tracks[maxPopularityIndex].name + " " + maxPopularity);
+            if(maxPopularityIndex > -1)
+                console.log(tracks[maxPopularityIndex].name + " " + maxPopularity);
         }
     }
 
