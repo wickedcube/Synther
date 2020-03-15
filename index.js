@@ -74,7 +74,7 @@ function getTracksData(trackname) {
         },
         "success" : function (result){
             var tracks = result.data.tracks.items;
-            for (let index = 0; index < array.length; index++) {
+            for (let index = 0; index < tracks.length; index++) {
                 const element = tracks[index];
                 console.log(element.name);
             }
