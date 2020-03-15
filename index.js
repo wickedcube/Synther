@@ -4,9 +4,9 @@ var ACCESS_TOKEN = '';
 var TRACK_SEARCH_LIMIT = 5;
 var LAST_TRACK_SEARCH_TERM = '';
 
-var loginButton = document.getElementById('btn-login');
-var trackSearchDiv = document.getElementById('trackSearchDiv');
-var trackSearchInput = document.getElementById('trackSearchInput');
+var loginButton = $('#btn-login');
+var trackSearchDiv = $('#trackSearchDiv');
+var trackSearchInput = $('#trackSearchInput');
 var topResultCard = $('#topResultCard');
 var playButton = $('#PlayTrackButton');
 var lastTrack;
@@ -119,14 +119,14 @@ function searchSpotify(trackname) {
     $.ajax(ajaxRequest);
 }
 
-loginButton.addEventListener('click', function () {
+loginButton.on('click', function () {
     login();
 });
 
-playButton.addEventListener('click', function () {
+playButton.on('click', function () {
     playMusic();
 });
 
-trackSearchInput.addEventListener('keydown', function() {
+trackSearchInput.on('keydown', function() {
   spotifySearch(trackSearchInput.value);
 });
