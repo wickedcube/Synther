@@ -3,19 +3,29 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="index.js" defer></script>
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Synther</h1>
-    <p class="lead">Login to spotify and select yout track (Premium users only)</p>
-    <button id = "btn-login"class="btn btn-outline-primary" role="button">Login with spotify</button>
-<div id = "trackSearchDiv" class="justify-content-center" style = "display:none; max-width : 300 ; text-align: center">
-    <input type="text" class="form-control" id="trackSearchInput" placeholder="Search for your track">
-    <div id ="topResultCard" class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." style="height: 180px; width: 100%;">
-        <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text"></p>
-          <button id="PlayTrackButton" class="btn btn-dark">Play</button>
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+      </div>
+      <div class="col-sm">
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h1 class="display-4">Synther</h1>
+            <p class="lead">Login to spotify and select yout track (Premium users only)</p>
+            <button id = "btn-login"class="btn btn-outline-primary" role="button">Login with spotify</button>
+            <div id = "trackSearchDiv" style = "padding-top:35px ; display:none;">
+                <input type="text" class="form-control" id="trackSearchInput" placeholder="Search for your track">
+                <div id ="topResultCard" style="height:240px ; padding-top:22px;padding-left:50px;padding-right:50px">
+                    <img class="card-img-top" src="">
+                    <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"></p>
+                    <button id="PlayTrackButton" class="btn btn-dark">Play</button>
+                    </div>
+                </div>
+            </div>
         </div>
+      </div>
+      <div class="col-sm">
       </div>
     </div>
 </div>
