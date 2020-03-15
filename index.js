@@ -73,11 +73,19 @@ function getTracksData(trackname) {
             "Authorization": "Bearer " + ACCESS_TOKEN,
         },
         "success" : function (result){
-            var tracks = result.data.tracks.items;
+            var tracks = result.tracks.items;
+            var maxPopularity = -1;
+            var maxPopularityIndex = -1;
             for (let index = 0; index < tracks.length; index++) {
                 const element = tracks[index];
-                console.log(element.name);
+                if(element.popularity > maxPopularity)
+                {
+                    maxPopularity = element.popularity;
+                    maxPopularityIndex = index;
+                }
             }
+
+            console.log(tracks[maxPopularityIndex].name + " " + maxPopularity);
         }
     }
 
