@@ -3,7 +3,8 @@ var REDIRECT_URI = 'https://wickedcube.github.io/callback/';
 var ACCESS_TOKEN = '';
 
 var loginButton = document.getElementById('btn-login');
-var trackSeacrh = document.getElementById('trackSeacrh');
+var trackSearchDiv = document.getElementById('trackSearchDiv');
+var trackSearchInput = document.getElementById('trackSearchInput');
 
 function login() {
     var width = 450,
@@ -21,7 +22,7 @@ function login() {
         if (hash.type == 'access_token') {
             ACCESS_TOKEN = hash.access_token;
             loginButton.style.display = 'none';
-            trackSeacrh.style.display = 'block';
+            trackSearchDiv.style.display = 'block';
         }
     }, false);
 }
@@ -64,7 +65,7 @@ function getTracksData(trackname) {
     var ajaxRequest = {
         "async": true,
         "crossDomain": true,
-        "url": "https://api.spotify.com/v1/search&q="+encodeURIComponent(trackname)+"&type=track&market=us&limit=3&offset=5",
+        "url": "https://api.spotify.com/v1/search&q=name:"+encodeURIComponent(trackname)+"&type=track,artist&market=us&limit=3&offset=0",
         "method": "GET",
         "headers": {
             "Content-Type": "application/json",
@@ -83,7 +84,6 @@ loginButton.addEventListener('click', function () {
     login();
 });
 
-trackSeacrh.addEventListener('keydown', function() {
-  spotifySearch(trackSeacrh.value);
-  console.log(trackSeacrh.value);
+trackSearchInput.addEventListener('keydown', function() {
+  spotifySearch(trackSearchInput.value);
 });
