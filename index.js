@@ -66,7 +66,7 @@ function getTracksData(trackname) {
     var ajaxRequest = {
         "async": true,
         "crossDomain": true,
-        "url": "https://api.spotify.com/v1/search?q=name:"+encodeURIComponent(trackname)+"&type=track&market=us&limit="+TRACK_SEARCH_LIMIT+"&offset=0",
+        "url": "https://api.spotify.com/v1/search?q=name:"+encodeURIComponent(trackname)+"&type=track&limit="+TRACK_SEARCH_LIMIT+"&offset=0",
         "method": "GET",
         "headers": {
             "Content-Type": "application/json",
