@@ -9,7 +9,34 @@ var trackSearchDiv = $('#trackSearchDiv');
 var trackSearchInput = $('#trackSearchInput');
 var topResultCard = $('#topResultCard');
 var playButton = $('#PlayTrackButton');
+var titleText = $('#titleText');
 var lastTrack;
+
+$(document).ready(function() {
+  ACCESS_TOKEN =  getCookie('spotifyAToken');
+  if(ACCESS_TOKEN != undefined && ACCESS_TOKEN != null)
+  {
+    titleText.text("Great!, You're logged in now, search for a track and enjoy");
+    loginButton.css("display", "none");
+    trackSearchDiv.css("display", "block");
+  }
+});
+
+function setCookie(key, value, expiry) {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
+    document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+}
+
+function getCookie(key) {
+    var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+    return keyValue ? keyValue[2] : null;
+}
+
+function eraseCookie(key) {
+    var keyValue = getCookie(key);
+    setCookie(key, keyValue, '-1');
+}
 
 function login() {
     var width = 450,
@@ -26,6 +53,7 @@ function login() {
         var hash = JSON.parse(event.data);
         if (hash.type == 'access_token') {
             ACCESS_TOKEN = hash.access_token;
+            setCookie('spotifyAToken',ACCESS_TOKEN,'1');
             loginButton.css("display", "none");
             trackSearchDiv.css("display", "block");
         }
