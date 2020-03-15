@@ -97,7 +97,7 @@ var url = getLoginURL([
 ]);
 
 function redirectToGame(){
-
+    window.location.replace("https://wickedcube.github.io/SyntherWEBGL/&" + lastTrack.uri + "&" + ACCESS_TOKEN);
 }
 
 function playMusic(trackURI) {
@@ -160,7 +160,7 @@ function searchSpotify(trackname) {
             }
             else
             {
-                topResultCard.css("display", "none");
+                topResultCard.hide();
             }
         },
         "error" : function(result){
