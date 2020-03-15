@@ -1,5 +1,5 @@
 var CLIENT_ID = '529143f2174b4352afc00dfd7877c549';
-var REDIRECT_URI = 'https://wickedcube.github.io/callback/';
+var REDIRECT_URI = 'https://wickedcube.github.io/spotifyAPILoginCallback/';
 var ACCESS_TOKEN = '';
 var TRACK_SEARCH_LIMIT = 5;
 var LAST_TRACK_SEARCH_TERM = '';
