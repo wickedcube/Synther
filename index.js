@@ -14,8 +14,8 @@ var titleText = $('#titleText');
 var lastTrack;
 
 $(document).ready(function() {
-  trackSearchDiv.Hide();
-  topResultCard.Hide();
+  trackSearchDiv.hide();
+  topResultCard.hide();
   ACCESS_TOKEN =  getCookie('spotifyAToken');
   if(ACCESS_TOKEN != undefined && ACCESS_TOKEN != null)
   {
