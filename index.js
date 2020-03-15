@@ -14,6 +14,8 @@ var titleText = $('#titleText');
 var lastTrack;
 
 $(document).ready(function() {
+  trackSearchDiv.Hide();
+  topResultCard.Hide();
   ACCESS_TOKEN =  getCookie('spotifyAToken');
   if(ACCESS_TOKEN != undefined && ACCESS_TOKEN != null)
   {
@@ -39,14 +41,14 @@ function eraseCookie(key) {
 
 function onLoginSuccess(){
     titleText.text("Great!, You're logged in now, search for a track and enjoy");
-    loginButton.css("display", "none");
-    trackSearchDiv.css("display", "block");
+    loginButton.hide();
+    trackSearchDiv.show();
 }
 
 function onTokenExpired(){
     titleText.text("Shucks!, Token expired please login again");
-    loginButton.css("display", "block");
-    trackSearchDiv.css("display", "none");
+    loginButton.show();
+    trackSearchDiv.hide();
 }
 
 function login() {
@@ -141,7 +143,7 @@ function searchSpotify(trackname) {
             if(maxPopularityIndex > -1)
             {
                 lastTrack = tracks[maxPopularityIndex];
-                topResultCard.css("display", "block");
+                topResultCard.show();
                 topResultCard.find('.card-img-top').attr('src', lastTrack.album.images[0].url);
                 topResultCard.find('.card-title').text(lastTrack.name);
                 var artistNameString = "";
