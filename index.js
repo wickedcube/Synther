@@ -43,6 +43,12 @@ function onLoginSuccess(){
     trackSearchDiv.css("display", "block");
 }
 
+function onTokenExpired(){
+    titleText.text("Shucks!, Token expired please login again");
+    loginButton.css("display", "block");
+    trackSearchDiv.css("display", "none");
+}
+
 function login() {
     var width = 450,
         height = 730,
@@ -153,6 +159,12 @@ function searchSpotify(trackname) {
             else
             {
                 topResultCard.css("display", "none");
+            }
+        },
+        "error" : function(result){
+            if(result.message.includes("expired"))
+            {
+                onTokenExpired();
             }
         }
     }
