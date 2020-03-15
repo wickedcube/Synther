@@ -98,6 +98,7 @@ function searchSpotify(trackname) {
 
             if(maxPopularityIndex > -1)
             {
+                lastTrack = tracks[maxPopularityIndex];
                 topResultCard.css("display", "block");
                 topResultCard.find('.card-img-top').attr('src', lastTrack.album.images[0].url);
                 topResultCard.find('.card-title').text(lastTrack.name);
